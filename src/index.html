@@ -28,10 +28,11 @@
             </div>
             <div class="row mb-5">
                 <div class="col-3">
-                    <input type="text" class="form-control" placeholder="CEP">
+                    <input id="cep" type="text" class="form-control" placeholder="CEP">
+                    <button id="btn-buscar-cep" type="button" class="btn btn-primary">Buscar</button>
                 </div>
                 <div class="col-7">
-                    <input type="text" class="form-control" placeholder="Endereço">
+                    <input id="endereco" type="text" class="form-control" placeholder="Endereço">
                 </div>
                 <div class="col-2">
                     <input type="number" class="form-control" placeholder="Número">
@@ -40,5 +41,7 @@
             <button type="submit" class="btn btn-success">Enviar pedido</button>
         </form>
     </div>
+
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
