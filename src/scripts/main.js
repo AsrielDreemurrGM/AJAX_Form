@@ -1,3 +1,4 @@
+// Coseguir Endereço Pelo CEP Através do JavaScript Puro
 // document.addEventListener('DOMContentLoaded', function() {
 //     document.getElementById('btn-buscar-cep').addEventListener('click', function() {
 //         // AJAX - Asynchronous JavaScript and XML
@@ -23,20 +24,39 @@ $(document).ready(function() {
         $(botao).find('i').addClass('d-none');
         $(botao).find('span').removeClass('d-none');
 
-        $.ajax(endPoint).done(function(resposta) {
-            const logradouro = resposta.logradouro;
-            const bairro = resposta.bairro;
-            const cidade = resposta.localidade;
-            const estado = resposta.uf;
+    // Conseguir Endereço Pelo JQuery (v3.7.1)
+    //     $.ajax(endPoint).done(function(resposta) {
+    //         const logradouro = resposta.logradouro;
+    //         const bairro = resposta.bairro;
+    //         const cidade = resposta.localidade;
+    //         const estado = resposta.uf;
             
+    //         const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
+            
+    //         $('#endereco').val(endereco);
+            
+    //         setTimeout(function() {
+    //             $(botao).find('i').removeClass('d-none');
+    //             $(botao).find('span').addClass('d-none');
+    //         }, 4000);
+    //     })
+
+        fetch(endPoint).then(function(resposta) {
+            return resposta.json()
+        })
+        .then(function(json) {
+            const logradouro = json.logradouro;
+            const bairro = json.bairro;
+            const cidade = json.localidade;
+            const estado = json.uf;
             const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
-            
+
             $('#endereco').val(endereco);
-            
+
             setTimeout(function() {
                 $(botao).find('i').removeClass('d-none');
                 $(botao).find('span').addClass('d-none');
-            }, 4000);
+                }, 4000);
         })
     })
 })
